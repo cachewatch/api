@@ -2,5 +2,5 @@ site_name: CacheWatch | Developers
 site_description: 'Documentation, development and CacheWatch plugins.'
 repo_url: https://github.com/cachewatch
 site_author: http://cache.watch/
-theme: journal
+theme: simplex
 site_url: http://developers.cache.watch/
