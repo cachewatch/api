@@ -1,4 +1,14 @@
-api
-===
+# Documents Of CacheWatch
 
-API for developer
+Install
+```
+$ git clone git@github.com:cachewatch/api.git cachewatch-doc
+$ pip install mkdocs
+```
+
+Use
+```
+$ cd cachewatch-doc
+$ mkdocs serve
+```
+
