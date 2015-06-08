@@ -1,5 +1,6 @@
 site_name: Documentacion de CacheWatch
 site_description: 'Documentacion, desarrollo y plugins con CacheWatch.'
-repo_url: https://github.com/cachewatch/api
+repo_url: https://github.com/cachewatch
 site_author: http://cache.watch/
+theme: journal
 site_url: https://developers.cache.watch/
