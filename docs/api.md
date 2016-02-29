@@ -1,7 +1,6 @@
 This API consists of two keys.
 
 * `KEY-token`, which is given on page user
-* `KEY-web`, works for for the system user.
 
 Each of these two has different accesses.
 
