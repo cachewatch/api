@@ -7,7 +7,7 @@ $ pip install mkdocs
 ```
 
 
-### Use
+#### Use
 ```
 $ cd cachewatch-doc
 $ mkdocs serve
