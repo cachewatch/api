@@ -1,350 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="http://cache.watch/">
-        <link rel="canonical" href="http://developers.cache.watch/api/">
-        <link rel="shortcut icon" href="../img/favicon.ico">
-
-	<title>Api - CacheWatch | Developers</title>
-
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
-        <link href="../css/base.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-        
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="..">CacheWatch | Developers</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="..">Home</a>
-                </li>
-            
-            
-            
-                <li class="active">
-                    <a href="./">Api</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../client/">Client</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../server/">Server</a>
-                </li>
-            
-            
-            </ul>
-
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li >
-                    <a rel="next" href="..">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li >
-                    <a rel="prev" href="../client/">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://github.com/cachewatch">
-                        
-                            <i class="fa fa-github"></i>
-                        
-                        GitHub
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-</div>
-
-        <div class="container">
-            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#cache">Cache</a></li>
-        
-            <li><a href="#put-page">Put page</a></li>
-        
-            <li><a href="#one-page">One page</a></li>
-        
-            <li><a href="#list">List</a></li>
-        
-    
-        <li class="main "><a href="#user">User</a></li>
-        
-            <li><a href="#update-user">Update user</a></li>
-        
-            <li><a href="#token">Token</a></li>
-        
-    
-        <li class="main "><a href="#baucher">Baucher</a></li>
-        
-    
-    </ul>
-</div></div>
-            <div class="col-md-9" role="main">
-
-<p>This API consists of two keys.</p>
-<ul>
-<li><code>KEY-token</code>, which is given on page user</li>
-<li><code>KEY-web</code>, works for for the system user.</li>
-</ul>
-<p>Each of these two has different accesses.</p>
-<h2 id="cache">Cache</h2>
-<p>It is where all directions with their respective pages are stored. Only be stored the <code>html</code></p>
-<h3 id="put-page">Put page</h3>
-<p>Make the call to a page, Response, will be the <code>html</code> after being executed.</p>
-<pre><code class="console">{ANY} /put?acces_token={KEY-TOKEN} HTTP/1.1
- Accept: */* 
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<p>En el query o body</p>
-<table>
-<thead>
-<tr>
-<th>Requerido</th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[x]</td>
-<td>host</td>
-</tr>
-<tr>
-<td></td>
-<td>protocol</td>
-</tr>
-<tr>
-<td></td>
-<td>path</td>
-</tr>
-<tr>
-<td></td>
-<td>query</td>
-</tr>
-<tr>
-<td></td>
-<td>Hash</td>
-</tr>
-</tbody>
-</table>
-<h3 id="one-page">One page</h3>
-<p>Response</p>
-<pre><code class="JSON">{
-    &quot;error&quot; : [
-        &quot;Error : Example Error&quot;
-    ],
-    &quot;totalPages&quot; : {NUMBER_PAGES},
-    &quot;cache&quot; : {
-        &quot;url&quot; : &quot;{URL}&quot;,
-        &quot;numb&quot; : {NUMBER_REQUESTS},
-        &quot;date&quot; : &quot;{TIME_CREATE}&quot;,
-        &quot;_id&quot; : &quot;{ID_CACHE}&quot;,
-    }
-}
-</code></pre>
-
-<p>Get the information of a page</p>
-<pre><code class="console">GET /url/{ID_CACHE} HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h4 id="update">Update</h4>
-<p>Updating the <code>html</code></p>
-<pre><code class="console">POST /url/{ID_CACHE} HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h4 id="delete">Delete</h4>
-<p>Remove the record</p>
-<pre><code class="console">DELETE /url/{ID_CACHE} HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h3 id="list">List</h3>
-<p>Response</p>
-<pre><code class="JSON">{
-    &quot;error&quot; : [
-        &quot;Error : Example Error&quot;
-    ],
-    &quot;totalPages&quot; : {NUMBER_PAGES},
-    &quot;list&quot; : [ {
-        &quot;url&quot; : &quot;{URL}&quot;,
-        &quot;numb&quot; : {NUMBER_REQUESTS},
-        &quot;date&quot; : &quot;{TIME_CREATE}&quot;,
-        &quot;_id&quot; : &quot;{ID_CACHE}&quot;,
-    }]
-}
-</code></pre>
-
-<p>Returns a list of pages that exist on the server.</p>
-<pre><code class="console">GET /url HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h4 id="delete_1">Delete</h4>
-<p>Clean list.</p>
-<pre><code class="console">Delete /url HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h2 id="user">User</h2>
-<p>Response</p>
-<pre><code class="JSON">{
-    &quot;error&quot; : [
-        &quot;Error : Example Error&quot;
-    ],
-    &quot;user&quot; : {
-        &quot;bit&quot; : &quot;{BITCOIN}&quot;,
-        &quot;data&quot; : {
-            &quot;updated_at&quot; : &quot;{TIME_UPDATE_GITHUB}&quot;,
-            &quot;created_at&quot; : &quot;{TIME_CREATE_GITHUB}&quot;,
-            &quot;name&quot; : &quot;{USER_GITHUB}&quot;,
-            &quot;company&quot; : &quot;&quot;,
-            &quot;type&quot; : &quot;User&quot;,
-            &quot;organizations_url&quot;: &quot;https://api.github.com/users/{USER_GITHUB}/orgs&quot;,
-            &quot;html_url&quot; : &quot;https://github.com/{USER_GITHUB}&quot;,
-            &quot;avatar_url&quot; : &quot;https://avatars.githubusercontent.com/u/{ID_GITHUB}?v=3&quot;,
-            &quot;login&quot; : &quot;{USER_GITHUB}&quot;
-        },
-        &quot;__v&quot;:0,
-        &quot;time&quot;: {NUMBER_DAYS},
-        &quot;date&quot; : &quot;{TIME_CREATE}&quot;,
-        &quot;web&quot; : &quot;{KEY-WEB}&quot;,
-        &quot;token&quot; : &quot;{KEY-TOKEN}&quot;,
-        &quot;id&quot; : &quot;{ID_USER}&quot;
-    }
-}
-</code></pre>
-
-<p>Gets the user</p>
-<pre><code class="console">GET /profile/me HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h3 id="update-user">Update user</h3>
-<p>Updated user information.</p>
-<pre><code class="console">POST /profile/me HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<p>Send </p>
-<pre><code class="JSON">{
-    &quot;time&quot; : {NUMBER_DAYS}
-}
-</code></pre>
-
-<h3 id="token">Token</h3>
-<p>It generates a new <code>KEY-TOKEN</code></p>
-<pre><code class="console">POST /profile/token HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<h2 id="baucher">Baucher</h2>
-<p>Returns all purchases have been made.</p>
-<pre><code class="console">GET /profile/baucher HTTP/1.1
- Accept: */* 
- X-AUTH-WEB: {KEY-WEB}
-Connection: close
- Host: service.cache.watch
-</code></pre>
-
-<p>Response</p>
-<pre><code class="JSON">{
-    &quot;error&quot; : [
-        &quot;Error : Example Error&quot;
-    ],
-    &quot;plans&quot; : [{
-        &quot;hash&quot;: &quot;{HASH-BITCOIN}&quot;,
-        &quot;num&quot; : {NUMBER-MAX-PER-PAGE},
-        &quot;total&quot; : {PRICE},
-        &quot;date&quot; : &quot;{DATE-END}&quot;,
-        &quot;start&quot; : &quot;{DATE-PAROCHE}&quot;,
-    }]
-}
-</code></pre>
-
-<p>Booty Swing by Parov Stelar</p></div>
-        </div>
-
-        
-
-        <script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../js/highlight.pack.js"></script>
-        <script src="../js/base.js"></script>
-    </body>
-</html>
